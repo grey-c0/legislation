@@ -138,10 +138,11 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
       // Create marker element
       const el = document.createElement('div');
       el.className = `map-marker relative`;
+      const size = Math.max(24, severity * 8);
       el.innerHTML = `
         <div style="
-          width: ${Math.max(24, severity * 8)}px;
-          height: ${Math.max(24, severity * 8)}px;
+          width: ${size}px;
+          height: ${size}px;
           background-color: ${color};
           border-radius: 50%;
           border: ${isSelected ? '4px' : '2px'} solid white;
@@ -160,6 +161,21 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
             text-shadow: 0 1px 2px rgba(0,0,0,0.5);
           ">${entryCount}</span>
         </div>
+        <div class="marker-tooltip" style="
+          position: absolute;
+          bottom: ${size + 6}px;
+          left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          background: rgba(0,0,0,0.85);
+          color: white;
+          padding: 3px 8px;
+          font-size: 11px;
+          font-family: 'IBM Plex Mono', monospace;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.15s ease;
+        ">${country} [${entryCount}]</div>
         ${isSelected ? `
           <div style="
             position: absolute;
@@ -175,6 +191,16 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
           ">${country}</div>
         ` : ''}
       `;
+
+      // Show tooltip on hover
+      el.addEventListener('mouseenter', () => {
+        const tooltip = el.querySelector<HTMLElement>('.marker-tooltip');
+        if (tooltip) tooltip.style.opacity = '1';
+      });
+      el.addEventListener('mouseleave', () => {
+        const tooltip = el.querySelector<HTMLElement>('.marker-tooltip');
+        if (tooltip) tooltip.style.opacity = '0';
+      });
 
       // Add click handler
       el.addEventListener('click', () => {

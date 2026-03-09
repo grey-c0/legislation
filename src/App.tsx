@@ -171,10 +171,10 @@ function App() {
             <span>NO ANALYTICS</span>
           </div>
           <div className="flex items-center gap-4">
-            <span>Data last updated: 2025-03-09</span>
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <span>Data last updated: 2026-03-09</span>
+            <a
+              href="https://github.com/grey-c0/legislation"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
             >

@@ -1,9 +1,9 @@
 import type { Entry } from '@/types/legislation';
 import { EntryCard } from './EntryCard';
-import { X, Filter, AlertTriangle } from 'lucide-react';
+import { X, Filter, AlertTriangle, Search } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import type { Status, Category } from '@/types/legislation';
-import { STATUS_LABELS, EU_MEMBER_STATES } from '@/types/legislation';
+import { STATUS_LABELS, CATEGORY_LABELS, EU_MEMBER_STATES } from '@/types/legislation';
 
 interface LegislationSidebarProps {
   entries: Entry[];
@@ -17,30 +17,41 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
   const [statusFilter, setStatusFilter] = useState<Status | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<Category | null>(null);
   const [severityFilter, setSeverityFilter] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Filter entries
   const filteredEntries = useMemo(() => {
     let filtered = entries;
-    
+
     if (selectedCountry) {
       filtered = filtered.filter(e =>
         e.location === selectedCountry ||
         (e.jurisdiction === 'Union' && EU_MEMBER_STATES.has(selectedCountry))
       );
     }
-    
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(e =>
+        e.commonName.toLowerCase().includes(q) ||
+        e.legalName.toLowerCase().includes(q) ||
+        e.description.toLowerCase().includes(q) ||
+        e.location.toLowerCase().includes(q)
+      );
+    }
+
     if (statusFilter) {
       filtered = filtered.filter(e => e.status === statusFilter);
     }
-    
+
     if (categoryFilter) {
       filtered = filtered.filter(e => e.categories.includes(categoryFilter));
     }
-    
+
     if (severityFilter) {
       filtered = filtered.filter(e => e.severity.score === severityFilter);
     }
-    
+
     // Sort by severity (highest first), then by status
     return filtered.sort((a, b) => {
       if (b.severity.score !== a.severity.score) {
@@ -49,7 +60,7 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
       const statusOrder = { active: 0, implementing: 1, passed: 2, proposed: 3, challenged: 4, repealed: 5 };
       return statusOrder[a.status] - statusOrder[b.status];
     });
-  }, [entries, selectedCountry, statusFilter, categoryFilter, severityFilter]);
+  }, [entries, selectedCountry, searchQuery, statusFilter, categoryFilter, severityFilter]);
 
   // Get counts
   const activeCount = entries.filter(e => e.status === 'active').length;
@@ -57,7 +68,14 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
   const proposedCount = entries.filter(e => e.status === 'proposed').length;
   const extremeCount = entries.filter(e => e.severity.score === 5).length;
 
-  const hasFilters = statusFilter || categoryFilter || severityFilter;
+  const hasFilters = statusFilter || categoryFilter || severityFilter || searchQuery.trim();
+
+  const clearAllFilters = () => {
+    setStatusFilter(null);
+    setCategoryFilter(null);
+    setSeverityFilter(null);
+    setSearchQuery('');
+  };
 
   return (
     <aside
@@ -114,6 +132,19 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
           </div>
         </div>
 
+        {/* Search */}
+        <div className="relative mb-3">
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground pointer-events-none" />
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            placeholder="Search legislation..."
+            className="w-full pl-8 pr-3 py-1.5 text-xs font-mono bg-background border border-border focus:outline-none focus:border-primary placeholder:text-muted-foreground"
+            aria-label="Search legislation"
+          />
+        </div>
+
         {/* Filters */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
@@ -123,27 +154,23 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
             </span>
             {hasFilters && (
               <button
-                onClick={() => {
-                  setStatusFilter(null);
-                  setCategoryFilter(null);
-                  setSeverityFilter(null);
-                }}
+                onClick={clearAllFilters}
                 className="text-xs text-primary hover:underline ml-auto"
               >
                 Clear all
               </button>
             )}
           </div>
-          
+
+          {/* Status filters */}
           <div className="flex flex-wrap gap-1.5">
-            {/* Status filters */}
             {(['active', 'implementing', 'passed', 'proposed', 'challenged'] as Status[]).map(status => (
               <button
                 key={status}
                 onClick={() => setStatusFilter(statusFilter === status ? null : status)}
                 className={`px-2 py-1 text-[10px] font-mono uppercase tracking-wider border transition-colors ${
-                  statusFilter === status 
-                    ? 'bg-primary text-primary-foreground border-primary' 
+                  statusFilter === status
+                    ? 'bg-primary text-primary-foreground border-primary'
                     : 'hover:border-primary'
                 }`}
               >
@@ -151,20 +178,37 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
               </button>
             ))}
           </div>
-          
+
+          {/* Severity filters */}
           <div className="flex flex-wrap gap-1.5">
-            {/* Severity filters */}
-            {[5, 4, 3].map(severity => (
+            {[5, 4, 3, 2, 1].map(severity => (
               <button
                 key={severity}
                 onClick={() => setSeverityFilter(severityFilter === severity ? null : severity)}
                 className={`px-2 py-1 text-[10px] font-mono uppercase tracking-wider border transition-colors ${
-                  severityFilter === severity 
-                    ? 'bg-primary text-primary-foreground border-primary' 
+                  severityFilter === severity
+                    ? 'bg-primary text-primary-foreground border-primary'
                     : 'hover:border-primary'
                 }`}
               >
-                Severity {severity}
+                Sev {severity}
+              </button>
+            ))}
+          </div>
+
+          {/* Category filters */}
+          <div className="flex flex-wrap gap-1.5">
+            {(Object.keys(CATEGORY_LABELS) as Category[]).map(category => (
+              <button
+                key={category}
+                onClick={() => setCategoryFilter(categoryFilter === category ? null : category)}
+                className={`px-2 py-1 text-[10px] font-mono uppercase tracking-wider border transition-colors ${
+                  categoryFilter === category
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'hover:border-primary'
+                }`}
+              >
+                {CATEGORY_LABELS[category]}
               </button>
             ))}
           </div>
@@ -179,11 +223,7 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
               No legislation matches your filters.
             </p>
             <button
-              onClick={() => {
-                setStatusFilter(null);
-                setCategoryFilter(null);
-                setSeverityFilter(null);
-              }}
+              onClick={clearAllFilters}
               className="mt-2 text-primary text-sm hover:underline"
             >
               Clear filters
@@ -191,8 +231,8 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, onClearC
           </div>
         ) : (
           filteredEntries.map(entry => (
-            <EntryCard 
-              key={entry.id} 
+            <EntryCard
+              key={entry.id}
               entry={entry}
               isExpanded={filteredEntries.length === 1}
             />

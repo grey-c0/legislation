@@ -118,9 +118,9 @@ export const STATUS_COLORS: Record<Status, string> = {
 };
 
 export const SEVERITY_COLORS: Record<number, string> = {
-  1: '#FFFFFF',
-  2: '#FFE4E1',
-  3: '#FFB6C1',
+  1: '#a8d5a2',
+  2: '#f5c542',
+  3: '#f4853a',
   4: '#DC143C',
   5: '#8B0000'
 };

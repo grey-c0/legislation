@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import type { Entry } from '@/types/legislation';
-import { SEVERITY_COLORS, STATUS_LABELS, CATEGORY_LABELS } from '@/types/legislation';
-import type { Status } from '@/types/legislation';
+import type { Entry, Status } from '@/types/legislation';
+import { SEVERITY_COLORS, STATUS_COLORS, STATUS_LABELS, CATEGORY_LABELS } from '@/types/legislation';
 import { ChevronDown, ExternalLink, AlertTriangle, Shield, FileText, Users } from 'lucide-react';
 
 interface EntryCardProps {
@@ -102,11 +101,11 @@ export function EntryCard({ entry, isExpanded: initialExpanded = false }: EntryC
 
         {/* Status Bar */}
         <div className="mt-3 flex items-center gap-3">
-          <div 
+          <div
             className={`flex items-center gap-2 px-3 py-1.5 text-xs font-mono uppercase tracking-wider ${getStatusClass(entry.status)}`}
-            style={{ 
+            style={{
               color: entry.status === 'proposed' ? '#1a1a1a' : 'white',
-              backgroundColor: entry.status === 'proposed' ? 'transparent' : severityColor
+              backgroundColor: entry.status === 'proposed' ? 'transparent' : STATUS_COLORS[entry.status]
             }}
           >
             {getStatusIcon(entry.status)}
