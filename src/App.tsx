@@ -11,7 +11,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Load legislation data
   useEffect(() => {
@@ -141,29 +141,6 @@ function App() {
           </div>
         )}
 
-        {/* Country selector (mobile/desktop when no selection) */}
-        {!selectedCountry && (
-          <div className="fixed bottom-4 left-4 right-4 md:right-auto md:w-auto bg-black/80 backdrop-blur-sm p-3 text-white">
-            <p className="text-[10px] font-mono uppercase tracking-wider text-white/60 mb-2">
-              Select a country
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {Array.from(new Set(entries.map(e => e.location))).map(country => {
-                const countryEntries = entries.filter(e => e.location === country);
-                return (
-                  <button
-                    key={country}
-                    onClick={() => handleCountrySelect(country)}
-                    className="px-3 py-1.5 text-xs font-mono border border-white/30 hover:border-primary hover:bg-primary/20 transition-colors"
-                  >
-                    {country}
-                    <span className="ml-2 text-white/50">[{countryEntries.length}]</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </main>
 
       {/* Footer */}
