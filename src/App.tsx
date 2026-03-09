@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/legislation.json');
+        const response = await fetch('./legislation.json');
         if (!response.ok) {
           throw new Error('Failed to load legislation data');
         }
