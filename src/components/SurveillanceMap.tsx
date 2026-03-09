@@ -232,14 +232,17 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
       <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm p-3 text-white text-xs font-mono">
         <div className="mb-2 font-bold uppercase tracking-wider">Severity</div>
         <div className="flex items-center gap-1">
-          {[1, 2, 3, 4, 5].map(level => (
-            <div 
-              key={level}
+          {([
+            { color: '#a8d5a2', label: '1' },
+            { color: '#f5c542', label: '2' },
+            { color: '#f4853a', label: '3' },
+            { color: '#DC143C', label: '4' },
+            { color: '#8B0000', label: '5' },
+          ] as const).map(({ color, label }) => (
+            <div
+              key={label}
               className="w-4 h-4 rounded-full border border-white/30"
-              style={{ 
-                backgroundColor: level <= 2 ? '#FFB6C1' : level === 3 ? '#DC143C' : '#8B0000',
-                opacity: level / 5
-              }}
+              style={{ backgroundColor: color }}
             />
           ))}
         </div>

@@ -10,7 +10,11 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) document.documentElement.classList.add('dark');
+    return prefersDark;
+  });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Load legislation data
@@ -48,6 +52,11 @@ function App() {
   const handleCountrySelect = useCallback((country: string) => {
     setSelectedCountry(country);
     setIsSidebarOpen(true);
+  }, []);
+
+  // Clear country selection
+  const handleClearCountry = useCallback(() => {
+    setSelectedCountry(null);
   }, []);
 
   // Calculate statistics
@@ -109,17 +118,27 @@ function App() {
           />
         </div>
 
+        {/* Mobile backdrop */}
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-30 md:hidden"
+            onClick={toggleSidebar}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Sidebar */}
         <LegislationSidebar
           entries={entries}
           selectedCountry={selectedCountry}
           onClose={toggleSidebar}
+          onClearCountry={handleClearCountry}
           isOpen={isSidebarOpen}
         />
 
         {/* Stats Overlay (when sidebar closed) */}
         {!isSidebarOpen && (
-          <div className="fixed bottom-4 right-4 bg-black/80 backdrop-blur-sm p-4 text-white">
+          <div className="fixed bottom-10 md:bottom-12 right-4 bg-black/80 backdrop-blur-sm p-4 text-white">
             <div className="grid grid-cols-2 gap-4 text-xs font-mono">
               <div className="flex items-center gap-2">
                 <Globe className="w-4 h-4 text-primary" />
