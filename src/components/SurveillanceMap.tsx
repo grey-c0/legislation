@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import type { Entry } from '@/types/legislation';
-import { COUNTRY_COORDINATES, STATUS_COLORS, STATUS_LABELS } from '@/types/legislation';
+import { COUNTRY_COORDINATES, STATUS_COLORS, STATUS_LABELS, EU_MEMBER_STATES } from '@/types/legislation';
 
 interface SurveillanceMapProps {
   entries: Entry[];
@@ -15,17 +15,26 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
   const map = useRef<maplibregl.Map | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
 
+  // Returns all entries relevant to a location:
+  // for EU member states, includes Union-level entries (location === 'EU') in addition to national ones.
+  const getEntriesForLocation = useCallback((country: string) => {
+    return entries.filter(e =>
+      e.location === country ||
+      (e.jurisdiction === 'Union' && EU_MEMBER_STATES.has(country))
+    );
+  }, [entries]);
+
   // Calculate average severity for each country
   const getCountrySeverity = useCallback((country: string) => {
-    const countryEntries = entries.filter(e => e.location === country);
+    const countryEntries = getEntriesForLocation(country);
     if (countryEntries.length === 0) return 0;
     const totalSeverity = countryEntries.reduce((sum, e) => sum + e.severity.score, 0);
     return Math.round(totalSeverity / countryEntries.length);
-  }, [entries]);
+  }, [getEntriesForLocation]);
 
   // Get most severe status for country
   const getCountryStatus = useCallback((country: string): keyof typeof STATUS_COLORS => {
-    const countryEntries = entries.filter(e => e.location === country);
+    const countryEntries = getEntriesForLocation(country);
     const statusPriority: Record<string, number> = {
       'active': 5,
       'implementing': 4,
@@ -37,12 +46,12 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
     return countryEntries.reduce((mostSevere, entry) => {
       return statusPriority[entry.status] > statusPriority[mostSevere] ? entry.status : mostSevere;
     }, 'repealed' as keyof typeof STATUS_COLORS);
-  }, [entries]);
+  }, [getEntriesForLocation]);
 
   // Get entry count for country
   const getEntryCount = useCallback((country: string) => {
-    return entries.filter(e => e.location === country).length;
-  }, [entries]);
+    return getEntriesForLocation(country).length;
+  }, [getEntriesForLocation]);
 
   useEffect(() => {
     if (!mapContainer.current || map.current) return;

@@ -10,7 +10,11 @@
         "score": 5,
         "rationale": "Universal application for employment [+1], criminal penalties for non-compliance [+1], biometric collection mandated [+1], no judicial oversight for data sharing [+1], mission creep to housing and benefits explicit [+1], digital exclusion of undocumented migrants [+1]. Total: 6/7 → 5/5"
       },
-      "categories": ["digital_id", "biometric_collection", "worker_surveillance"],
+      "categories": [
+        "digital_id",
+        "biometric_collection",
+        "worker_surveillance"
+      ],
       "jurisdiction": "National",
       "description": "Mandatory digital ID cards required for all employment right-to-work checks by 2029, explicitly targeting undocumented workers and creating a two-tier labor market where migrant labor is hyper-surveilled while employers gain enhanced verification powers.",
       "sources": [
@@ -42,7 +46,12 @@
         "score": 5,
         "rationale": "Universal application to all internet users [+1], criminal penalties for platforms (10% global revenue) [+1], irreversible biometric age estimation data collection [+1], chilling effect on organizing by requiring identity for social media [+1], mission creep from pornography to all 'harmful content' [+1], no judicial oversight for Ofcom notices [+1], digital exclusion for those without ID [+1]. Total: 7/7 → 5/5"
       },
-      "categories": ["age_verification", "platform_mandated_scanning", "encryption_backdoor", "digital_id"],
+      "categories": [
+        "age_verification",
+        "platform_mandated_scanning",
+        "encryption_backdoor",
+        "digital_id"
+      ],
       "jurisdiction": "National",
       "description": "Requires 'highly effective' age verification for adult content platforms by July 2025, with provisions enabling Ofcom to mandate client-side scanning of encrypted messages, effectively outlawing end-to-end encryption while creating mandatory identity verification for internet access.",
       "sources": [
@@ -74,7 +83,10 @@
         "score": 4,
         "rationale": "Universal data retention applies to entire population [+1], no criminal penalties for individuals but severe surveillance [+0], irreversible bulk personal dataset collection [+1], explicit targeting of journalists and organizers possible [+1], mission creep to new agencies (IPO, ambulance services) [+1], limited judicial oversight via 'double lock' but broad ministerial discretion [+0.5], no digital exclusion [+0]. Total: 4.5/7 → 4/5"
       },
-      "categories": ["traffic_retention", "data_retention"],
+      "categories": [
+        "traffic_retention",
+        "data_retention"
+      ],
       "jurisdiction": "National",
       "description": "Expands bulk personal dataset retention and adds new public authorities (including Intellectual Property Office and ambulance services) authorized to access communications data without warrant, with implementation commencing April-June 2025.",
       "sources": [
@@ -106,7 +118,11 @@
         "score": 5,
         "rationale": "Universal application - traffic retention at internet nodes captures entire population [+1], criminal penalties for non-compliance by providers [+1], irreversible full-content interception and 6-month data retention [+1], explicit targeting of journalists and foreign nationals in Germany [+1], mission creep to 'offensive hacking' of foreign providers [+1], no judicial oversight for foreign intelligence collection [+1], creates digital exclusion by surveillance chilling effect [+0.5]. Total: 6.5/7 → 5/5"
       },
-      "categories": ["traffic_retention", "data_retention", "encryption_backdoor"],
+      "categories": [
+        "traffic_retention",
+        "data_retention",
+        "encryption_backdoor"
+      ],
       "jurisdiction": "National",
       "description": "Comprehensive expansion of Federal Intelligence Service (BND) powers including full-content interception at internet exchange nodes, 6-month data retention, offensive hacking of foreign technology providers, and surveillance of foreign journalists in Germany.",
       "sources": [
@@ -133,7 +149,10 @@
         "score": 4,
         "rationale": "Universal assignment of digital identity to all citizens [+1], no criminal penalties yet but administrative penalties likely [+0.5], biometric collection (facial recognition for smartphone storage) [+1], potential chilling effect if linked to employment [+0.5], explicit mission creep to EU Digital Identity Wallet framework [+1], judicial oversight for data access unclear [+0.5], digital exclusion of those without smartphones [+1]. Total: 4.5/7 → 4/5"
       },
-      "categories": ["digital_id", "biometric_collection"],
+      "categories": [
+        "digital_id",
+        "biometric_collection"
+      ],
       "jurisdiction": "National",
       "description": "Nationwide rollout of smartphone-based digital ID cards allowing biometric verification for employment, banking, and healthcare, integrated with EU Digital Identity Wallet framework requiring implementation by 2027.",
       "sources": [
@@ -154,14 +173,18 @@
       "id": "DE-2025-CHAT-001",
       "commonName": "Chatkontrolle (EU CSAM Regulation)",
       "legalName": "Verordnung zur Verhinderung der Verbreitung sexuellen Missbrauchs von Kindern (CSAR)",
-      "location": "Germany",
+      "location": "EU",
       "status": "proposed",
       "severity": {
         "score": 4,
         "rationale": "Universal application to all EU messaging users [+1], criminal penalties for non-compliant platforms [+1], irreversible client-side scanning creates permanent surveillance infrastructure [+1], severe chilling effect on worker organizing and confidential communications [+1], mission creep from CSAM to 'unknown content' scanning explicit [+1], no judicial oversight for AI-based detection [+1], creates digital exclusion by banning anonymous communication [+1]. Total: 7/7 → 5/5 (proposed as 4 due to ongoing opposition)"
       },
-      "categories": ["encryption_backdoor", "platform_mandated_scanning", "age_verification"],
-      "jurisdiction": "Regional",
+      "categories": [
+        "encryption_backdoor",
+        "platform_mandated_scanning",
+        "age_verification"
+      ],
+      "jurisdiction": "Union",
       "description": "German government split on supporting EU-wide 'Chat Control' regulation mandating client-side scanning of encrypted messages for CSAM detection, with current draft including mandatory age verification and voluntary but incentivized mass scanning.",
       "sources": [
         {
@@ -192,7 +215,11 @@
         "score": 4,
         "rationale": "Universal application to all social media users in affected states [+1], criminal/civil penalties for platforms [+1], biometric and government ID data collection [+1], chilling effect on youth organizing and political speech [+1], mission creep from 'protecting minors' to general identity verification [+1], no judicial oversight for data sharing with law enforcement [+0.5], digital exclusion for unbanked/undocumented [+1]. Total: 5.5/7 → 4/5"
       },
-      "categories": ["age_verification", "digital_id", "biometric_collection"],
+      "categories": [
+        "age_verification",
+        "digital_id",
+        "biometric_collection"
+      ],
       "jurisdiction": "State",
       "description": "Patchwork of state laws mandating government ID or biometric age verification for social media access, with Texas, Louisiana, and others actively enforcing while courts issue preliminary injunctions in Arkansas, Ohio, and California.",
       "sources": [
@@ -224,7 +251,10 @@
         "score": 5,
         "rationale": "Universal application to all encrypted communications [+1], criminal liability for platform employees (Section 230 carveout) [+1], irreversible mandate for client-side scanning or backdoors [+1], severe chilling effect on organizing (workers cannot communicate securely) [+1], mission creep from CSAM to all 'illegal content' [+1], no judicial oversight for scanning mandates [+1], creates digital exclusion by making encrypted services unavailable [+1]. Total: 7/7 → 5/5"
       },
-      "categories": ["encryption_backdoor", "platform_mandated_scanning"],
+      "categories": [
+        "encryption_backdoor",
+        "platform_mandated_scanning"
+      ],
       "jurisdiction": "National",
       "description": "Federal legislation threatening Section 230 liability protections for platforms offering end-to-end encryption unless they implement client-side scanning, effectively mandating encryption backdoors under the guise of combating CSAM.",
       "sources": [
@@ -256,7 +286,11 @@
         "score": 4,
         "rationale": "Targets specific population (immigrants/visa holders) but affects entire population through chilling effect [+0.5], no criminal penalties for surveilled but detention/deportation [+1], irreversible data collection and retention [+1], explicit targeting of worker organizing among immigrant communities [+1], mission creep from 'national security' to general law enforcement [+1], no judicial oversight for open-source surveillance [+1], digital exclusion through fear of monitoring [+0.5]. Total: 5/7 → 4/5"
       },
-      "categories": ["worker_surveillance", "data_retention", "platform_mandated_scanning"],
+      "categories": [
+        "worker_surveillance",
+        "data_retention",
+        "platform_mandated_scanning"
+      ],
       "jurisdiction": "National",
       "description": "ICE expansion of social media monitoring through contractor-operated 'intelligence fusion centers' in Vermont and California, specifically targeting immigrant workers for deportation enforcement using commercial databases and open-source intelligence.",
       "sources": [
@@ -283,7 +317,10 @@
         "score": 3,
         "rationale": "Applies to specific workforce (warehouse/gig workers) not entire population [+0], no criminal penalties but termination/blacklisting [+0.5], biometric badge data collection potentially permanent [+1], explicit chilling effect on union organizing [+1], mission creep to 'productivity optimization' [+0.5], no judicial oversight for workplace surveillance [+1], digital exclusion through algorithmic management [+0.5]. Total: 4.5/7 → 3/5"
       },
-      "categories": ["worker_surveillance", "biometric_collection"],
+      "categories": [
+        "worker_surveillance",
+        "biometric_collection"
+      ],
       "jurisdiction": "National",
       "description": "Systematic surveillance of warehouse workers through barcode badge tracking, 'scan to scan' productivity metrics, and algorithmic management systems that automatically terminate workers failing to meet quotas, explicitly used to prevent union formation.",
       "sources": [
@@ -310,7 +347,11 @@
         "score": 4,
         "rationale": "Universal application to 'any person providing services to the public' [+1], criminal penalties for non-compliance (fines up to $5,000, potential imprisonment) [+1], irreversible subscriber data and IP retention [+1], chilling effect on journalists and organizers [+1], mission creep to medical records and Canada Post mail [+1], warrantless access removes judicial oversight [+1], digital exclusion through fear of surveillance [+0.5]. Total: 5.5/7 → 4/5"
       },
-      "categories": ["data_retention", "encryption_backdoor", "worker_surveillance"],
+      "categories": [
+        "data_retention",
+        "encryption_backdoor",
+        "worker_surveillance"
+      ],
       "jurisdiction": "National",
       "description": "Omnibus border security bill attempting to introduce warrantless access to subscriber data and IP addresses, forcing technical assistance from service providers, and expanding surveillance powers to CSIS and law enforcement under 'lawful access' framework.",
       "sources": [
@@ -342,7 +383,10 @@
         "score": 3,
         "rationale": "Universal application to online platforms [+1], no criminal penalties for users but platform liability [+0.5], age verification data collection potentially permanent [+0.5], chilling effect on speech through 'duty to protect children' [+0.5], mission creep to 'harmful content' expansion likely [+0.5], Digital Safety Commission oversight (not judicial) [+0.5], digital exclusion through age verification barriers [+0.5]. Total: 4/7 → 3/5"
       },
-      "categories": ["age_verification", "platform_mandated_scanning"],
+      "categories": [
+        "age_verification",
+        "platform_mandated_scanning"
+      ],
       "jurisdiction": "National",
       "description": "Proposed legislation establishing Digital Safety Commission with powers to mandate age verification and platform scanning for child protection, reintroduced after dying on order paper with 2024 prorogation.",
       "sources": [
@@ -374,7 +418,10 @@
         "score": 3,
         "rationale": "Voluntary currently but increasing pressure for adoption [+0.5], no criminal penalties [+0], biometric collection for higher assurance levels [+1], potential chilling effect on employment if adopted by gig platforms [+0.5], mission creep to banking and legal services explicit [+1], oversight by DIACC (industry body, not judicial) [+0.5], digital exclusion of those without bank accounts [+1]. Total: 4.5/7 → 3/5"
       },
-      "categories": ["digital_id", "biometric_collection"],
+      "categories": [
+        "digital_id",
+        "biometric_collection"
+      ],
       "jurisdiction": "National",
       "description": "Expansion of Verified.Me and DIACC Pan-Canadian Trust Framework enabling private sector digital identity verification for legal, financial, and employment sectors, with federated but increasingly centralized biometric collection.",
       "sources": [
@@ -401,7 +448,11 @@
         "score": 4,
         "rationale": "Universal application to government services, expanding to private sector [+1], administrative penalties for non-compliance by providers [+0.5], biometric collection (facial verification) [+1], chilling effect on organizing if required for employment [+0.5], explicit mission creep to private sector banking/telco by 2026-2027 [+1], oversight by ACCC and Services Australia (not judicial) [+0.5], digital exclusion for those without smartphones/bank accounts [+1]. Total: 5/7 → 4/5"
       },
-      "categories": ["digital_id", "biometric_collection", "age_verification"],
+      "categories": [
+        "digital_id",
+        "biometric_collection",
+        "age_verification"
+      ],
       "jurisdiction": "National",
       "description": "Legislation expanding myGovID from 130 government services to private sector (banks, telcos, utilities) by 2026, with biometric facial verification and 'Trust Exchange' enabling cross-sector data sharing.",
       "sources": [
@@ -433,7 +484,11 @@
         "score": 4,
         "rationale": "Universal age verification required for all social media users [+1], criminal penalties for platforms ($49.5M AUD fines) [+1], biometric age estimation or government ID collection [+1], severe chilling effect on youth organizing and political expression [+1], mission creep to other platforms explicit in legislation [+1], eSafety Commissioner discretion (not judicial) [+0.5], digital exclusion of under-16s and those without ID [+1]. Total: 5.5/7 → 4/5"
       },
-      "categories": ["age_verification", "digital_id", "biometric_collection"],
+      "categories": [
+        "age_verification",
+        "digital_id",
+        "biometric_collection"
+      ],
       "jurisdiction": "National",
       "description": "World-first ban on social media accounts for under-16s effective December 10, 2025, requiring platforms to implement 'reasonable steps' age verification including biometric estimation or government ID submission.",
       "sources": [
@@ -465,7 +520,10 @@
         "score": 4,
         "rationale": "Universal application to encrypted communications [+1], criminal penalties for providers (failure to comply) [+1], forced decryption capabilities [+1], severe chilling effect on journalist and worker communications [+1], mission creep to 'serious crime' from terrorism [+1], limited judicial oversight (AG approval only) [+0.5], no digital exclusion but creates security exclusion [+0]. Total: 5.5/7 → 4/5"
       },
-      "categories": ["encryption_backdoor", "data_retention"],
+      "categories": [
+        "encryption_backdoor",
+        "data_retention"
+      ],
       "jurisdiction": "National",
       "description": "Active legislation compelling telecommunications providers and tech companies to provide technical assistance to law enforcement including decryption of encrypted communications, with Technical Capability Notices requiring systemic weaknesses.",
       "sources": [
@@ -497,7 +555,10 @@
         "score": 4,
         "rationale": "Universal application to minors but affects all users through platform over-compliance [+1], no direct criminal penalties for users but FTC enforcement creates liability [+0.5], irreversible age verification data collection incentivized [+1], severe chilling effect on youth organizing and LGBTQ+ worker communities [+1], mission creep from 'harms' to broad content filtering evident [+1], FTC discretion without judicial oversight [+0.5], digital exclusion of youth from organizing spaces [+1]. Total: 5/7 → 4/5"
       },
-      "categories": ["age_verification", "platform_mandated_scanning"],
+      "categories": [
+        "age_verification",
+        "platform_mandated_scanning"
+      ],
       "jurisdiction": "National",
       "description": "Federal legislation allowing FTC to sue platforms failing to 'prevent harms' to minors, creating incentives for invasive age verification and content filtering that disproportionately targets LGBTQ+ youth and young worker organizers while undermining Section 230 protections.",
       "sources": [
@@ -529,7 +590,10 @@
         "score": 4,
         "rationale": "Universal application to all data subjects [+1], administrative penalties for non-compliance [+0.5], enables permanent algorithmic decision databases [+1], explicit chilling effect on worker organizing through weakened ADM protections [+1], mission creep to AI training and 'recognized legitimate interests' [+1], removed judicial oversight for many data processing decisions [+0.5], enables digital exclusion through automated decision-making [+0.5]. Total: 4.5/7 → 4/5"
       },
-      "categories": ["worker_surveillance", "digital_id"],
+      "categories": [
+        "worker_surveillance",
+        "digital_id"
+      ],
       "jurisdiction": "National",
       "description": "Post-Brexit data protection reform weakening UK GDPR protections to enable algorithmic management of workers, reducing automated decision-making safeguards and removing 'balancing tests' for data processing while maintaining EU adequacy status through 2025.",
       "sources": [
@@ -561,7 +625,12 @@
         "score": 5,
         "rationale": "Universal application to telecom users and critical infrastructure [+1], criminal and administrative penalties ($15M/day for corporations) [+1], irreversible CSE data retention and Five Eyes sharing [+1], explicit targeting of infrastructure workers and potential chilling effect on strikes [+1], mission creep from cyber security to intelligence collection explicit [+1], warrantless Minister powers remove judicial oversight [+1], creates digital exclusion through surveillance infrastructure [+0.5]. Total: 5.5/7 → 5/5"
       },
-      "categories": ["traffic_retention", "encryption_backdoor", "worker_surveillance", "data_retention"],
+      "categories": [
+        "traffic_retention",
+        "encryption_backdoor",
+        "worker_surveillance",
+        "data_retention"
+      ],
       "jurisdiction": "National",
       "description": "Reintroduced cybersecurity legislation granting Communications Security Establishment (CSE) and ministers warrantless powers to compel telecom data, access critical infrastructure systems, and issue secret 'cyber security directions' with potential for encryption backdoors and Five Eyes intelligence sharing.",
       "sources": [
@@ -593,7 +662,9 @@
         "score": 2,
         "rationale": "Applies to employers using ADS, not universal population [+0], no surveillance created but restricts existing [+0], prevents irreversible algorithmic discrimination [+0], explicitly PROTECTS worker organizing by preventing predictive retaliation [+0], prevents mission creep of worker surveillance [+0], establishes judicial oversight via private right of action [+0], reduces digital exclusion by requiring human review [+0]. Total: 0/7 → 2/5 (Low severity as protective legislation, included to show counter-surveillance efforts)"
       },
-      "categories": ["worker_surveillance"],
+      "categories": [
+        "worker_surveillance"
+      ],
       "jurisdiction": "State",
       "description": "California legislation establishing worker protections against algorithmic management by prohibiting solely automated firing/discipline decisions, banning predictive behavior analysis, and requiring human oversight with transparency for ADS use in employment.",
       "sources": [
@@ -625,7 +696,10 @@
         "score": 3,
         "rationale": "Universal for construction workers (~600,000 in NSW) [+0.5], administrative penalties for non-compliance [+0.5], permanent digital record via Service NSW app [+0.5], potential chilling effect on undocumented construction workers [+0.5], mission creep to other trade licenses explicit [+1], no judicial oversight for data access [+0.5], digital exclusion requires smartphone/MyServiceNSW Account [+1]. Total: 4/7 → 3/5"
       },
-      "categories": ["digital_id", "worker_surveillance"],
+      "categories": [
+        "digital_id",
+        "worker_surveillance"
+      ],
       "jurisdiction": "State",
       "description": "Mandatory digitization of construction industry safety credentials requiring workers to use Service NSW app with MyServiceNSW Account, creating biometric-linked digital trails for site access while employers verify via QR code scanning.",
       "sources": [
@@ -657,7 +731,11 @@
         "score": 4,
         "rationale": "Universal application to social media users [+1], platforms face €50M fines driving over-compliance [+0.5], irreversible police database entries for reported content [+1], severe chilling effect on political organizing and union activity [+1], mission creep from hate speech to 'economic sabotage' and protest organizing [+1], no judicial oversight before BKA referral [+1], digital exclusion through platform fear [+0.5]. Total: 5/7 → 4/5"
       },
-      "categories": ["platform_mandated_scanning", "data_retention", "worker_surveillance"],
+      "categories": [
+        "platform_mandated_scanning",
+        "data_retention",
+        "worker_surveillance"
+      ],
       "jurisdiction": "National",
       "description": "Amendment to Network Enforcement Act requiring social media platforms to proactively report 'manifestly criminal content' to Federal Criminal Police Office (BKA) Central Reporting Office (ZMI), creating direct pipeline from platform moderation to federal criminal investigations.",
       "sources": [

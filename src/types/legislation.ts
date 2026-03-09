@@ -38,11 +38,19 @@ export interface Entry {
   id: string;
   commonName: string;
   legalName: string;
+  /**
+   * For EU-level legislation (e.g. eIDAS 2.0, Chat Control), set this to "EU".
+   *
+   * EU entries represent directives/regulations that cascade into member states. They are not laws of any single country, but impose compliance obligations on member states.
+   *
+   * Country name for map grouping, for example: "Germany", "Australia" or "EU"
+   */
   location: string;
   status: Status;
   severity: Severity;
   categories: Category[];
-  jurisdiction: 'National' | 'State' | 'Regional';
+  /** Administrative level: "Union", "National", "State", or "Regional" */
+  jurisdiction: 'Union' | 'National' | 'State' | 'Regional';
   description: string;
   sources: Source[];
   notes: string;
@@ -53,12 +61,22 @@ export interface LegislationData {
 }
 
 export const COUNTRY_COORDINATES: Record<string, [number, number]> = {
+  'EU': [10.0, 51.5],
   'Germany': [10.4515, 51.1657],
   'United Kingdom': [-3.4360, 55.3781],
   'Canada': [-106.3468, 56.1304],
   'United States': [-95.7129, 37.0902],
   'Australia': [133.7751, -25.2744]
 };
+
+/** EU member states whose markers should also surface Union-level entries. */
+export const EU_MEMBER_STATES = new Set([
+  'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic',
+  'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary',
+  'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta',
+  'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia',
+  'Spain', 'Sweden'
+]);
 
 export const STATUS_COLORS: Record<Status, string> = {
   'proposed': '#FFB6C1',
