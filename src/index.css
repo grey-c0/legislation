@@ -69,8 +69,8 @@
 
 /* Paper texture background */
 .paper-texture {
-  background-color: #FAFAFA;
-  background-image: 
+  background-color: hsl(var(--background));
+  background-image:
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -88,8 +88,8 @@
 }
 
 .dark .paper-texture {
-  background-color: #1a1a1a;
-  background-image: 
+  background-color: hsl(var(--background));
+  background-image:
     repeating-linear-gradient(
       0deg,
       transparent,

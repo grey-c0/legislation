@@ -1,4 +1,4 @@
-import { Eye, EyeOff, Menu, X, Radio, ShieldAlert } from 'lucide-react';
+import { Moon, Sun, Menu, X, Radio, ShieldAlert } from 'lucide-react';
 
 interface HeaderProps {
   isDarkMode: boolean;
@@ -53,9 +53,9 @@ export function Header({ isDarkMode, onToggleDarkMode, onToggleSidebar, isSideba
             aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDarkMode ? (
-              <Eye className="w-5 h-5" />
+              <Sun className="w-5 h-5" />
             ) : (
-              <EyeOff className="w-5 h-5" />
+              <Moon className="w-5 h-5" />
             )}
           </button>
         </div>

@@ -49,9 +49,11 @@ export function EntryCard({ entry, isExpanded: initialExpanded = false }: EntryC
   return (
     <div className="entry-card mb-4">
       {/* Header */}
-      <div 
-        className="p-4 cursor-pointer"
+      <div
+        className="p-4 cursor-pointer select-none"
         onClick={() => setIsExpanded(!isExpanded)}
+        role="button"
+        aria-expanded={isExpanded}
       >
         <div className="flex items-start justify-between gap-4">
           {/* ID and Name */}
@@ -78,18 +80,23 @@ export function EntryCard({ entry, isExpanded: initialExpanded = false }: EntryC
             </p>
           </div>
 
-          {/* Severity Dots */}
-          <div className="flex gap-1 items-center">
-            {[1, 2, 3, 4, 5].map(level => (
-              <div
-                key={level}
-                className={`severity-dot ${level <= entry.severity.score ? 'active' : 'inactive'}`}
-                style={{ 
-                  color: severityColor,
-                  borderColor: severityColor
-                }}
-              />
-            ))}
+          {/* Severity Dots + Expand Chevron */}
+          <div className="flex flex-col items-end gap-2">
+            <div className="flex gap-1 items-center">
+              {[1, 2, 3, 4, 5].map(level => (
+                <div
+                  key={level}
+                  className={`severity-dot ${level <= entry.severity.score ? 'active' : 'inactive'}`}
+                  style={{
+                    color: severityColor,
+                    borderColor: severityColor
+                  }}
+                />
+              ))}
+            </div>
+            <ChevronDown
+              className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+            />
           </div>
         </div>
 

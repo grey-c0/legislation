@@ -9,10 +9,11 @@ interface LegislationSidebarProps {
   entries: Entry[];
   selectedCountry: string | null;
   onClose: () => void;
+  onClearCountry: () => void;
   isOpen: boolean;
 }
 
-export function LegislationSidebar({ entries, selectedCountry, onClose, isOpen }: LegislationSidebarProps) {
+export function LegislationSidebar({ entries, selectedCountry, onClose, onClearCountry, isOpen }: LegislationSidebarProps) {
   const [statusFilter, setStatusFilter] = useState<Status | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<Category | null>(null);
   const [severityFilter, setSeverityFilter] = useState<number | null>(null);
@@ -59,37 +60,38 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, isOpen }
   const hasFilters = statusFilter || categoryFilter || severityFilter;
 
   return (
-    <aside 
-      className={`fixed top-[88px] left-0 bottom-0 w-full md:w-[480px] lg:w-[520px] bg-background border-r border-border transform transition-transform duration-300 z-40 overflow-hidden ${
+    <aside
+      className={`fixed top-[88px] left-0 bottom-0 w-full md:w-[480px] lg:w-[520px] bg-background border-r border-border transform transition-transform duration-300 z-40 flex flex-col overflow-hidden ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
       {/* Sidebar Header */}
       <div className="p-4 border-b border-border bg-muted/30">
         <div className="flex items-center justify-between mb-3">
-          <h2 
-            className="text-lg font-bold"
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-          >
-            {selectedCountry ? (
-              <>
-                {selectedCountry}
-                <span className="text-muted-foreground font-normal ml-2">
-                  [{filteredEntries.length}]
-                </span>
-              </>
-            ) : (
-              <>
-                All Legislation
-                <span className="text-muted-foreground font-normal ml-2">
-                  [{filteredEntries.length}]
-                </span>
-              </>
+          <div className="flex items-center gap-2 min-w-0">
+            <h2
+              className="text-lg font-bold truncate"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              {selectedCountry ?? 'All Legislation'}
+              <span className="text-muted-foreground font-normal ml-2">
+                [{filteredEntries.length}]
+              </span>
+            </h2>
+            {selectedCountry && (
+              <button
+                onClick={onClearCountry}
+                className="text-[10px] font-mono uppercase tracking-wider text-primary hover:underline whitespace-nowrap"
+                aria-label="Show all countries"
+              >
+                ← All
+              </button>
             )}
-          </h2>
+          </div>
           <button
             onClick={onClose}
-            className="p-1.5 hover:bg-muted transition-colors"
+            className="p-1.5 hover:bg-muted transition-colors flex-shrink-0"
+            aria-label="Close sidebar"
           >
             <X className="w-5 h-5" />
           </button>
@@ -170,7 +172,7 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, isOpen }
       </div>
 
       {/* Entries List */}
-      <div className="overflow-y-auto h-[calc(100%-180px)] p-4">
+      <div className="overflow-y-auto flex-1 p-4">
         {filteredEntries.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-muted-foreground font-mono text-sm">
