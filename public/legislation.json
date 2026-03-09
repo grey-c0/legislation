@@ -170,9 +170,9 @@
       "notes": "Voluntary in theory but 'every citizen will be assigned a digital identity.' Coalition government claims alignment with EU eIDAS regulation. Involves Google and Samsung in wallet development. Connects to BundID and BundesIdent previous systems criticized for low adoption due to complexity. Explicitly designed to enable employment verification, raising concerns about eventual mandatory use for work following UK model. EU interoperability means data sharing across member states with varying privacy protections."
     },
     {
-      "id": "DE-2025-CHAT-001",
+      "id": "EU-2025-CHAT-001",
       "commonName": "Chat Control / Child Sexual Abuse Material Regulation (CSAR)",
-      "legalName": "Proposal for a Regulation to Prevent and Combat Child Sexual Abuse (2022/0155(COD)) / Verordnung zur Verhinderung der Verbreitung sexuellen Missbrauchs von Kindern (CSAR)",
+      "legalName": "Proposal for a Regulation to Prevent and Combat Child Sexual Abuse (2022/0155(COD))",
       "location": "EU",
       "status": "challenged",
       "severity": {
