@@ -170,16 +170,6 @@ export function SurveillanceMap({ entries, selectedCountry, onCountrySelect }: S
       // Add click handler
       el.addEventListener('click', () => {
         onCountrySelect(country);
-        
-        // Fly to country
-        if (map.current) {
-          map.current.flyTo({
-            center: coords,
-            zoom: 4,
-            duration: 1500,
-            essential: true
-          });
-        }
       });
 
       // Create and add marker
