@@ -3,7 +3,7 @@ import { EntryCard } from './EntryCard';
 import { X, Filter, AlertTriangle } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import type { Status, Category } from '@/types/legislation';
-import { STATUS_LABELS } from '@/types/legislation';
+import { STATUS_LABELS, EU_MEMBER_STATES } from '@/types/legislation';
 
 interface LegislationSidebarProps {
   entries: Entry[];
@@ -22,7 +22,10 @@ export function LegislationSidebar({ entries, selectedCountry, onClose, isOpen }
     let filtered = entries;
     
     if (selectedCountry) {
-      filtered = filtered.filter(e => e.location === selectedCountry);
+      filtered = filtered.filter(e =>
+        e.location === selectedCountry ||
+        (e.jurisdiction === 'Union' && EU_MEMBER_STATES.has(selectedCountry))
+      );
     }
     
     if (statusFilter) {
