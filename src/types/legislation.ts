@@ -61,12 +61,42 @@ export interface LegislationData {
 }
 
 export const COUNTRY_COORDINATES: Record<string, [number, number]> = {
+  // EU bloc marker
   'EU': [10.0, 51.5],
+  // EU member states — all receive Union-level entries on the map
+  'Austria': [14.5501, 47.5162],
+  'Belgium': [4.4699, 50.5039],
+  'Bulgaria': [25.4858, 42.7339],
+  'Croatia': [15.2000, 45.1000],
+  'Cyprus': [33.4299, 34.9254],
+  'Czech Republic': [15.4729, 49.8175],
+  'Denmark': [9.5018, 56.2639],
+  'Estonia': [24.7536, 58.5953],
+  'Finland': [25.7482, 61.9241],
+  'France': [2.3522, 46.2276],
   'Germany': [10.4515, 51.1657],
+  'Greece': [21.8243, 39.0742],
+  'Hungary': [19.5033, 47.1625],
+  'Ireland': [-8.2439, 53.4129],
+  'Italy': [12.5674, 41.8719],
+  'Latvia': [24.6032, 56.8796],
+  'Lithuania': [23.8813, 55.1694],
+  'Luxembourg': [6.1296, 49.8153],
+  'Malta': [14.3754, 35.9375],
+  'Netherlands': [5.2913, 52.1326],
+  'Poland': [19.1451, 51.9194],
+  'Portugal': [-8.2245, 39.3999],
+  'Romania': [24.9668, 45.9432],
+  'Slovakia': [19.6990, 48.6690],
+  'Slovenia': [14.9955, 46.1512],
+  'Spain': [-3.7492, 40.4637],
+  'Sweden': [18.6435, 60.1282],
+  // Other countries
   'United Kingdom': [-3.4360, 55.3781],
   'Canada': [-106.3468, 56.1304],
   'United States': [-95.7129, 37.0902],
-  'Australia': [133.7751, -25.2744]
+  'Australia': [133.7751, -25.2744],
+  'New Zealand': [174.8860, -40.9006],
 };
 
 /** EU member states whose markers should also surface Union-level entries. */
